@@ -18,9 +18,9 @@ Now we have the logstash-1.4.2 folder in current directory.  We can make 4 types
 - **Codec**: On this configuration we make transformations on the data, like turning into a JSON structure, or grouping together lines that are semantically related, like for example, a Java's stack trace.
 - **Filter**: On this configuration we make operations such as parsing data from/to different formats, removal of special characters and checksums for DE duplication.
 - **Output**: On this configuration we define the destinations for the processed data, such as an ElasticSearch cluster, AWS SQS, Nagios etc.
+
 Please find the code to generate the logs from here. Now go to the logstash folder and create config.conf file with following entries:
-
-
+```
 input {
 log4j {
 port => 1500
@@ -37,7 +37,7 @@ port => 9200
 index => "log4jlogs"
 }
 }
-
+```
 ElasticSearch installation
 We have to download the LogStash, so open the terminal and enter:
 curl https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz | tar -zx
