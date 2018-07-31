@@ -1,12 +1,10 @@
 
 The applications are having multiple systems with multiple logs. The logs don't provide only real-time analysis of the technical status of the software but could also provide some business information too.  So that to get the useful information form the logs we need to enters the ELK (ElasticSearch, LogStash, and Kibana) architecture:
 
- 
-
 Each tools provides different responsibilities:
-•	ElasticSearch: This provides a clustered solution to make searches on a set of data.
-•	Logstash: This is responsible for collecting the data, make transformations like parsing - using regular expressions - adding fields, formatting as structures like JSON, etc. and finally sending the data to various destinations, like an ElasticSearch cluster. 
-•	Kibana: This is a web-based application to provide a light and easy-to-use dashboard tool. 
+*	**ElasticSearch**: This provides a clustered solution to make searches on a set of data.
+*	**Logstash**: This is responsible for collecting the data, make transformations like parsing - using regular expressions - adding fields, formatting as structures like JSON, etc. and finally sending the data to various destinations, like an ElasticSearch cluster. 
+*	**Kibana**: This is a web-based application to provide a light and easy-to-use dashboard tool. 
 Lets start with Logstash:
 
 LogStash installation
@@ -14,10 +12,10 @@ We have to download the LogStash, so open the terminal and enter:
 curl https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar -xz
 
 Now we have the logstash-1.4.2 folder in current directory.  We can make 4 types of configurations in LogStash:
-•	Input: On this configuration, we put the sources of our streams, that can range from polling files of a file system to more complex inputs such as a Amazon SQS queue and even Twitter.
-•	Codec: On this configuration we make transformations on the data, like turning into a JSON structure, or grouping together lines that are semantically related, like for example, a Java's stack trace.
-•	Filter: On this configuration we make operations such as parsing data from/to different formats, removal of special characters and checksums for DE duplication.
-•	Output: On this configuration we define the destinations for the processed data, such as an ElasticSearch cluster, AWS SQS, Nagios etc.
+- **Input**: On this configuration, we put the sources of our streams, that can range from polling files of a file system to more complex inputs such as a Amazon SQS queue and even Twitter.
+- **Codec**: On this configuration we make transformations on the data, like turning into a JSON structure, or grouping together lines that are semantically related, like for example, a Java's stack trace.
+- **Filter**: On this configuration we make operations such as parsing data from/to different formats, removal of special characters and checksums for DE duplication.
+- **Output**: On this configuration we define the destinations for the processed data, such as an ElasticSearch cluster, AWS SQS, Nagios etc.
 Please find the code to generate the logs from here. Now go to the logstash folder and create config.conf file with following entries:
 
 
