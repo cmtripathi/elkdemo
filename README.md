@@ -8,7 +8,7 @@ Each tools provides different responsibilities:
 
 Lets start with **Logstash**:
 
-LogStash installation
+# LogStash installation
 We have to download the LogStash, so open the terminal and enter:
 
 curl https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar -xz
@@ -38,7 +38,7 @@ index => "log4jlogs"
 }
 }
 ```
-ElasticSearch installation
+# ElasticSearch installation
 We have to download the LogStash, so open the terminal and enter:
 ```
 curl https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz | tar -zx
@@ -57,18 +57,13 @@ Now we have our cluster up and running, let's start to use it. Let's see the map
 ```
 curl -XGET 'localhost:9200/log4jlogs/_mapping?pretty'
 ```
-The result would be:
-
- 
 
 Let's begin by searching all log messages, which the priority was "INFO". We make this searching by running:
 ```
 curl -XGET 'localhost:9200/log4jlogs/log4j/_search?q=priority:info&pretty=true'
 ```
-A fragment of the result would be something like the following:
  
-
-Kibana installation
+# Kibana installation
 Let’s download Kibana from the site. To do this, let's open a terminal and type the following command:
 ```
 curl https://download.elastic.co/kibana/kibana/kibana-4.0.0-darwin-x64.tar.gz
@@ -89,14 +84,9 @@ Now, let's start using Kibana. Let's open a web browser and enter:
 ```
 http://localhost:5601/
 ```
-Now we can see the log under the discover tab:
 
- 
-
-
-
-References:
-https://dzone.com/articles/elk-using-centralized-logging
-https://dzone.com/articles/elk-using-centralized-logging-0
-https://dzone.com/articles/elk-using-centralized-logging-1
+# References:
+* https://dzone.com/articles/elk-using-centralized-logging
+* https://dzone.com/articles/elk-using-centralized-logging-0
+* https://dzone.com/articles/elk-using-centralized-logging-1
 
