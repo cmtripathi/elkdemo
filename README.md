@@ -46,6 +46,51 @@ sudo cp -avr elasticsearch-1.4.4/ elasticsearchcluster/elasticsearch-1.4.4-node1
 sudo cp -avr elasticsearch-1.4.4/ elasticsearchcluster/elasticsearch-1.4.4-node2/
 rm -R elasticsearch-1.4.4/
 
-Now we have to start both nodes by calling ./elasticsearch-1.4.4-node1/elasticsearch and ./elasticsearch-1.4.4-node2/elasticsearch
+Now we have to start both nodes by calling ./elasticsearch-1.4.4-node1/elasticsearch and ./elasticsearch-1.4.4-node1/elasticsearch & and ./elasticsearch-1.4.4-node1/elasticsearch and ./elasticsearch-1.4.4-node2/elasticsearch &
 
------ comming more points soon!!
+Now we have our cluster up and running, let's start to use it. Let's see the mappings of the index that ElasticSearch created for us, based on the configuration we made on LogStash. Let's open a terminal and run the following command:
+
+curl -XGET 'localhost:9200/log4jlogs/_mapping?pretty'
+
+The result would be:
+
+ 
+
+Let's begin by searching all log messages, which the priority was "INFO". We make this searching by running:
+
+curl -XGET 'localhost:9200/log4jlogs/log4j/_search?q=priority:info&pretty=true'
+
+A fragment of the result would be something like the following:
+ 
+
+Kibana installation
+Let’s download Kibana from the site. To do this, let's open a terminal and type the following command:
+
+curl https://download.elastic.co/kibana/kibana/kibana-4.0.0-darwin-x64.tar.gz
+
+Please check the exact download link accordingly to your OS from the following site:
+
+http://www.elasticsearch.org/overview/kibana/installation/
+
+After running the command, we can see a folder called "kibana-4.0.0-darwin-x64". That's all we need to do to install Kibana on our lab. Before we start running, however, we need to start both Logstash and ElasticSearch, to make our whole stack go live.
+
+One configuration needs to change that the elasticsearch_url property, inside the "/kibana-4.0.0-darwin-x64/config/kibana.yml" file. Since we didn't change the default port from our elasticsearch's cluster and we are running all the tools on the same machine, there is no need to change anything, but on a real world scenario, you may need to change this property to point to your elasticsearch's cluster. 
+
+After we start the rest of the stack, it is time to run Kibana. To run it, we have to run following command from the terminal:
+
+./kibana-4.0.0-darwin-x64/bin/kibana
+
+Now, let's start using Kibana. Let's open a web browser and enter:
+
+http://localhost:5601/
+Now we can see the log under the discover tab:
+
+ 
+
+
+
+References:
+https://dzone.com/articles/elk-using-centralized-logging
+https://dzone.com/articles/elk-using-centralized-logging-0
+https://dzone.com/articles/elk-using-centralized-logging-1
+
